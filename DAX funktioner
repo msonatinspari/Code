@@ -1,1 +1,132 @@
-dd
+DAX funktioner:
+
+Characters from a column
+-	LEFT(“table”, “column”, “number of caracters”)
+-	RIGHT(“table”, “column”, “number of characters”)
+
+Lower or Upper-case
+-	LOWER(“Column”)
+-	UPPER(“Column”)
+
+Udregn med where betingelse
+-	Calculate(“udregning (eks: total profit)”,  Column=”betingelse (eks: blå)”, Column=”betingelse”(eks: USA))
+
+Brug ”calculate”
+-	Calculate (matematisk operator (eks:AVERAGE)(kolonne)
+
+Brug Filter (udregn kun på en del af kolonne)
+-	calculate (kolonne), filter (table, kollone, værdi)
+
+Lav kalender dage imellem minimum og maximum dato i en række
+-	Calendar(MIN(column), max (column)
+
+Udskift tekst I en kolonne
+-	Substitute(kolonne, ”tekst som skal udskiftes”, ”ny tekst (eks: ””)”
+
+Værdi fra en anden kollone
+-	Related(kolonne)
+
+Tilføje tekst til udregninger
+-	//
+
+Tæl antal i række
+-	Countrows(kollone)
+
+Ignorer alle tidligere filter
+-	ALL til sidst i navn
+
+Par to datasæt
+-	Crossfilter (tabel 1, tabel 2, direction(eks: BOTH)
+
+Tæl blanke værdier
+-	COUNTBLANK(kolonne)
+
+Udregn kun på et værdisæt (eks: kun udregning på alle år, hvis slicer kan vælge forskellige år)
+-	CALCULATE (kolonne/udregning, ALL(kolonne/datoer)
+
+Tæl unikke værdier
+-	DISTINCTCOUNT (kolonne)
+
+Tæl antal rækker I en table
+-	COUNTROWS(tabel)
+
+Filter function
+-	= Filter(Table, condition)
+-	Filter (table, condition = true)
+
+HASONEVALUE (
+-	Har værdien en værdi (eller er det en del af en udregning med flere værdier)?
+
+Tilføj kolonner
+-	Tilføjer alle kolonner - 
+o	ADDCOLUMNS(FACT_TABLE, ”Profit”, Revenue - Costs)
+-	Tilføjer kun en kolonne (profit) - 
+o	SELECTCOLUMNS(FACT_TABLE, ”Profit”, Revenue - Costs)
+
+
+Iterating functions (udregnes for hver række)
+-	AVERAGEX(table, expression)
+-	SUMX(table, expression 
+o	eks: SUMX(MÅLTABEL, IF (FCK_MÅL < GNM_MÅL, 1, 0)
+-	RANKX(All(table), expression) - Rangerer værdierne
+-	Med FILTER: SUMX(FILTER(Table, filteret), expression)
+
+Logiske funktioner
+
+-	If: Checks condition and returns a value if true and/or false. 
+o	DISCOUNT RATE RANKING = IF( HASONEVALUE (EMPLOYEE table) = TRUE, 
+RANKX(
+ALL(EMPLOYEE table), AVERAGE DISCOUNT RATE),
+BLANK())
+-	AND && Checks whether both arguments are true and returns true if both arguments are true. Otherwise it returns false.
+o	(“logical1”, “logical 2”) - returns true if both conditions are true. Eks: AND( 5 < 4, 5 < 6) = AND(FALSE, TRUE) = FALSE
+-	OR (||) - returns true if one condition is true
+-	NOT (OR (“logical1”, “logical 2”) - changes true to false and vice versa
+-	SWITCH Performance = SWITCH(TRUE, “total sales” <25000, “poor”,
+           “total sales” <5000, “below expectations”,
+           “total sales” <7500, “Above expectations”,
+           “exceptional”)
+	EKS: EMPLOYEE PERFORMANCE ANALYSIS = SWITCH(TRUE,
+AND(AVERAGE_DISCOUNT < 0.3296, PROFIT >0.5380), “HIGH”,
+AND(AVERAGE_DISCOUNT < 0.3300, PROFIT >0.5370), “MED”, 
+“LOW”)
+			
+- 
+
+
+Quick Measures:
+-	Procent forskel indenfor en column med filter
+
+Operators:
+-	== strict equal to
+-	> greater than
+-	< less than
+-	>= Greater than or equal to
+-	<> not equal to
+-	&& and condition
+-	II Or condition
+-	IN [] Or condition for each row
+
+Best practises
+-	Ved længere udregninger (anvend gerne
+-	Forsøg at lave emotionel respons - glad (Alt ser fint ud i dashboardet), sur (dashboard viser at noget er galt).
+-	Tjekliste til præsentation
+o	Lav specifikt til kunden
+o	Fokuser på en historie pr. faneblad
+o	Balance imelem information visuals and confusing the audience - simpelt
+o	Ved nye visuals
+	Tilføjer det indsigt til historien?
+	Er det den rigtige graf/tabel?
+	Er det nødvendigt?
+-	Brug helst ikke farvefølsomme indikatorer, da mange er farveblinde
+
+Udskrift af reporter
+
+GDPR (eks):
+•	Brugere skal give accept til brug af data
+•	Databrugere skal have besked om datalæk
+•	Personlig data skal krypteres, pseudonymiseres eller anonymiseres
+•	Personlig data må ikke forlade EU’s grænser, medmindre samme sikkerhedsstandard kan garanteres udenfor EU’s grænser.
+•	
+
+
