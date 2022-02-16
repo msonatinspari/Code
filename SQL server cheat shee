@@ -22,3 +22,15 @@ from d101200.psd_befolkning
     PERSON_ID not in (
       select PERSON_ID from D500300.PSD_RAS where koen=1 and REFERENCETID = TO_DATE ('31122018', 'ddmmyyyy'))
 group by KOEN
+
+************Lav ny tabel fra eksisterende tabel***********;
+Select SUBSTRING("FT", 1, 1) Mål_scoret, Round, Date, Team_1 as hometeam, FT
+INTO Hometeams 
+from football.dbo.[eng.3]
+Where FT IS NOT NULL
+
+************Ændring af datatype i select statement************;
+Select hometeam, cast (Maal_scoret as int) as maal
+Into Hometeams_3
+from Hometeams_222
+
