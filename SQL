@@ -1,8 +1,0 @@
-*SQL fra DST:
-
-select distinct KOEN, count (PERSON_ID) as antal
-from d101200.psd_befolkning
-    where REFERENCETID = TO_DATE ('31122018', 'ddmmyyyy') and
-    PERSON_ID not in (
-      select PERSON_ID from D500300.PSD_RAS where koen=1 and REFERENCETID = TO_DATE ('31122018', 'ddmmyyyy'))
-group by KOEN
