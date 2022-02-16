@@ -1,4 +1,4 @@
-Take first (or any other) number from a row: 
+***********Take first (or any other) number from a row***********: 
 
 select SUBSTRING("FT", 1, 1) A, Round, Date, Team_1 as hometeam, FT
 from football.dbo.[eng.3]
@@ -6,7 +6,7 @@ Where Team_1 = 'Chelsea FC' and
 	  FT IS NOT NULL
 https://www.w3schools.com/sql/func_mysql_substring.asp
     
-Is the first number a character? (0=no, 1=yes):
+**********Is the first number a character? (0=no, 1=yes)***********:
 
 select PATINDEX ('%pattern%' , FT) as home_goal, FT
 from football.dbo.[eng.3]
@@ -14,3 +14,11 @@ Where Team_1 = 'Burnley FC' and
 	  FT IS NOT NULL
 https://docs.microsoft.com/en-us/sql/t-sql/functions/patindex-transact-sql?redirectedfrom=MSDN&view=sql-server-ver15
 
+************Filtrer værdier fra på anden variabel(DST)***********:
+
+select distinct KOEN, count (PERSON_ID) as antal
+from d101200.psd_befolkning
+    where REFERENCETID = TO_DATE ('31122018', 'ddmmyyyy') and
+    PERSON_ID not in (
+      select PERSON_ID from D500300.PSD_RAS where koen=1 and REFERENCETID = TO_DATE ('31122018', 'ddmmyyyy'))
+group by KOEN
