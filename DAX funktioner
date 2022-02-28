@@ -1,5 +1,30 @@
 DAX funktioner:
 
+Dato dimension:
+Datotabel = 
+  GENERATE (
+    CALENDAR( DATE( YEAR( TODAY() ) - 2, MONTH( TODAY() ), DAY( TODAY()) ), TODAY()+60),
+    VAR startOfWeek = 2 // Where 1 is Sunday and 7 is Saturday, thus a 3 would be Tuesday    
+    VAR currentDay = [Date]
+    VAR days = DAY( currentDay )
+    VAR months = MONTH ( currentDay )
+    VAR years = YEAR ( currentDay )
+    VAR nowYear = YEAR( TODAY() )
+    VAR nowMonth = MONTH( TODAY() )
+    VAR dayIndex = DATEDIFF( currentDay, TODAY(), DAY) * -1
+    VAR todayNum = WEEKDAY( TODAY() )
+    VAR weekIndex = INT( ROUNDDOWN( ( dayIndex + -1 * IF( todayNum + startOfWeek <= 6, todayNum + startOfWeek, todayNum + startOfWeek - 7 )) / 7, 0 ) )
+  RETURN ROW (
+    "day", days,
+    "month", months,
+    "year", years,
+    "day index", dayIndex,
+    "week index", weekIndex,
+    "month index", INT( (years - nowYear ) * 12 + months - nowMonth ),
+    "year index", INT( years - nowYear )
+  )
+)
+
 Characters from a column
 -	LEFT(“table”, “column”, “number of caracters”)
 -	RIGHT(“table”, “column”, “number of characters”)
