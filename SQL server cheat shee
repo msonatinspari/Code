@@ -1,3 +1,10 @@
+***********Returner ingenting når der skal returneres med NULL***********
+SET ANSI_NULLS ON
+GO
+
+***********
+
+
 ***********Take first (or any other) number from a row***********: 
 
 select SUBSTRING("FT", 1, 1) A, Round, Date, Team_1 as hometeam, FT
